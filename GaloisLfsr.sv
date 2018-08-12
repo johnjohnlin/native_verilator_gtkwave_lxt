@@ -1,8 +1,8 @@
 module GaloisLfsr(
-	input logic clk,
-	input logic rst,
-	input logic en,
-	output [4:0] state
+	input  logic clk,
+	input  logic rst,
+	input  logic en,
+	output logic [4:0] state
 );
 	logic [4:0] state_w;
 
