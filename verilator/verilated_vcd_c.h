@@ -61,7 +61,6 @@ class VerilatedVcd {
 		void flush() VL_MT_UNSAFE { lxt2_wr_flush(m_lxt2); }
 		void close() VL_MT_UNSAFE {
 			m_assertOne.check();
-			puts("close");
 			lxt2_wr_close(m_lxt2);
 			m_lxt2 = NULL;
 		}
@@ -84,11 +83,9 @@ class VerilatedVcd {
 
 		/// Inside dumping routines, dump one signal if it has changed
 		void chgBit (vluint32_t code, const vluint32_t newval) {
-			printf("Update %u to %u\n", code, newval);
 			lxt2_wr_emit_value_int(m_lxt2, m_code2symbol[code], 0, newval);
 		}
 		void chgBus (vluint32_t code, const vluint32_t newval, int bits) {
-			printf("Update %u to %u\n", code, newval);
 			lxt2_wr_emit_value_int(m_lxt2, m_code2symbol[code], 0, newval);
 		}
 
