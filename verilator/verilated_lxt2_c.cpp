@@ -17,14 +17,14 @@
 //=============================================================================
 ///
 /// \file
-/// \brief C++ Tracing in VCD Format
+/// \brief C++ Tracing in LXT2 Format
 ///
 //=============================================================================
 // SPDIFF_OFF
 
 #include "verilatedos.h"
 #include "verilated.h"
-#include "verilated_vcd_c.h"
+#include "verilated_lxt2_c.h"
 
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -143,5 +143,4 @@ void VerilatedVcd::dump (vluint64_t timeui) {
 
 //********************************************************************
 // Local Variables:
-// compile-command: "mkdir -p ../test_dir && cd ../test_dir && c++ -DVERILATED_VCD_TEST ../src/verilated_vcd_c.cpp -o verilated_vcd_c && ./verilated_vcd_c && cat test.vcd"
 // End:

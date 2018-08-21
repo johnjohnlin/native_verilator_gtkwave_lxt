@@ -64,6 +64,15 @@ class VerilatedVcd {
 			lxt2_wr_close(m_lxt2);
 			m_lxt2 = NULL;
 		}
+		// void set_time_unit (const char* unit); ///< Set time units (s/ms, defaults to ns)
+		// void set_time_unit (const std::string& unit) { set_time_unit(unit.c_str()); }
+
+		// void set_time_resolution (const char* unit); ///< Set time resolution (s/ms, defaults to ns)
+		// void set_time_resolution (const std::string& unit) { set_time_resolution(unit.c_str()); }
+
+		// double timescaleToDouble (const char* unitp);
+		// std::string doubleToTimescale (double value);
+
 		/// Change character that splits scopes.  Note whitespace are ALWAYS escapes.
 		void scopeEscape(char flag) { m_scopeEscape = flag; }
 		/// Is this an escape?
@@ -89,7 +98,8 @@ class VerilatedVcd {
 			lxt2_wr_emit_value_int(m_lxt2, m_code2symbol[code], 0, newval);
 		}
 
-		// disabled
+		// Disabled
+		// Even in a large module, these functions are not used?
 		void declQuad     (vluint32_t code, const char* name, int arraynum, int msb, int lsb);
 		void declArray    (vluint32_t code, const char* name, int arraynum, int msb, int lsb);
 		void declTriBit   (vluint32_t code, const char* name, int arraynum);
@@ -98,7 +108,8 @@ class VerilatedVcd {
 		void declTriArray (vluint32_t code, const char* name, int arraynum, int msb, int lsb);
 		void declDouble   (vluint32_t code, const char* name, int arraynum);
 		void declFloat    (vluint32_t code, const char* name, int arraynum);
-		void fullBit (vluint32_t code, const vluint32_t newval) { abort(); } 
+		// What's the difference between fullX and chgX function?
+		void fullBit (vluint32_t code, const vluint32_t newval) { abort(); }
 		void fullBus (vluint32_t code, const vluint32_t newval, int bits) { abort(); }
 		void fullQuad (vluint32_t code, const vluint64_t newval, int bits);
 		void fullArray (vluint32_t code, const vluint32_t* newval, int bits);
@@ -112,6 +123,7 @@ class VerilatedVcd {
 		void fullBusX (vluint32_t code, int bits);
 		void fullQuadX (vluint32_t code, int bits);
 		void fullArrayX (vluint32_t code, int bits);
+		// Even in a large module, these functions are not used?
 		void chgQuad (vluint32_t code, const vluint64_t newval, int bits);
 		void chgArray (vluint32_t code, const vluint32_t* newval, int bits);
 		void chgTriBit (vluint32_t code, const vluint32_t newval, const vluint32_t newtri);
@@ -142,8 +154,6 @@ class VerilatedVcdC {
 	bool isOpen() const { return m_sptrace.isOpen(); }
 	// METHODS
 	/// Open a new VCD file
-	/// This includes a complete header dump each time it is called,
-	/// just as if this object was deleted and reconstructed.
 	void open(const char* filename) VL_MT_UNSAFE_ONE { m_sptrace.open(filename); }
 	/// Close dump
 	void close() VL_MT_UNSAFE_ONE { m_sptrace.close(); }
