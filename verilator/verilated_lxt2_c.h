@@ -27,8 +27,6 @@
 #include "verilatedos.h"
 #include "verilated.h"
 #include "lxt2/lxt2_write.h"
-// Include the GTKWave implementation directly
-#include "lxt2/lxt2_write.cpp"
 
 #include <string>
 #include <vector>

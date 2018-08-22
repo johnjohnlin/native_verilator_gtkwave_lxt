@@ -25,6 +25,8 @@
 #include "verilatedos.h"
 #include "verilated.h"
 #include "verilated_lxt2_c.h"
+// Include the GTKWave implementation directly
+#include "lxt2/lxt2_write.cpp"
 
 #include <sys/types.h>
 #include <sys/stat.h>
