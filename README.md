@@ -18,17 +18,19 @@ Compile the object file for LXT writer.
 
 Add flags for including these files.
 
-    verilator --cc --trace --exe testbench.cpp `pwd`/lxt2_write.o -CFLAGS "-I `pwd`/lxt2/" -LDFLAGS "-lz" GaloisLfsr.sv
+    verilator --cc --trace --exe t_trace_lxt2.cpp `pwd`/lxt2_write.o -CFLAGS "-I `pwd`/lxt2/" -LDFLAGS "-lz" t_trace_lxt2.v
 
 Copying the files in `verilator/` to the `obj_dir`, and then run Verilator.
 
     cp verilator/* obj_dir
-    make -C obj_dir -f VGaloisLfsr.mk && ./obj_dir/VGaloisLfsr
+    make -C obj_dir -f Vt_trace_lxt2.mk && ../obj_dir/Vt_trace_lxt2
+
+Edit the `XXX_trace_XXX.cpp` files.
+
+    #include "verilated_lxt2_c.h"
+    #include "Vt_trace_lxt2__Syms.h"
+    typedef VerilatedVcd VerilatedLxt2;
 
 You can view the signal now.
 
-    gtkwace GaloisLfsr.lxt2
-
-By copying the verilator vcd files, the default makefile will use the modified VCD dumper.
-Do not overwrite the original files in standard Verilator,
-since it is just a proof of concept and not fully compatible.
+    gtkwave t_trace_lxt2.lxt2

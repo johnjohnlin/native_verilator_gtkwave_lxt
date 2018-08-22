@@ -16,17 +16,19 @@
 //=============================================================================
 ///
 /// \file
-/// \brief C++ Tracing in VCD Format
+/// \brief C++ Tracing in LXT2 Format
 ///
 //=============================================================================
 // SPDIFF_OFF
 
-#ifndef _VERILATED_VCD_C_H_
-#define _VERILATED_VCD_C_H_ 1
+#ifndef _VERILATED_LXT2_C_H_
+#define _VERILATED_LXT2_C_H_ 1
 
 #include "verilatedos.h"
 #include "verilated.h"
-#include "lxt2_write.h"
+#include "lxt2/lxt2_write.h"
+// Include the GTKWave implementation directly
+#include "lxt2/lxt2_write.cpp"
 
 #include <string>
 #include <vector>
@@ -38,7 +40,7 @@ typedef void (*VerilatedVcdCallback_t)(VerilatedVcd* vcdp, void* userthis, vluin
 
 //=============================================================================
 // VerilatedVcd
-/// Base class to create a Verilator VCD dump
+/// Base class to create a Verilator LXT2 dump
 /// This is an internally used class - see VerilatedVcdC for what to call from applications
 
 class VerilatedVcd {
@@ -136,7 +138,7 @@ class VerilatedVcd {
 
 //=============================================================================
 // VerilatedVcdC
-/// Create a VCD dump file in C standalone (no SystemC) simulations.
+/// Create a LXT2 dump file in C standalone (no SystemC) simulations.
 /// Also derived for use in SystemC simulations.
 /// Thread safety: Unless otherwise indicated, every function is VL_MT_UNSAFE_ONE
 
@@ -153,7 +155,7 @@ class VerilatedVcdC {
 	/// Is file open?
 	bool isOpen() const { return m_sptrace.isOpen(); }
 	// METHODS
-	/// Open a new VCD file
+	/// Open a new LXT2 file
 	void open(const char* filename) VL_MT_UNSAFE_ONE { m_sptrace.open(filename); }
 	/// Close dump
 	void close() VL_MT_UNSAFE_ONE { m_sptrace.close(); }
